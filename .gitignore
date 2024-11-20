@@ -1,0 +1,19 @@
+/target
+
+# IntelliJ IDEA specific
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Rust specific
+/target/
+/Cargo.lock
+
+# Logs
+*.log
+
+# Other
+*.DS_Store
+*~
+#*
