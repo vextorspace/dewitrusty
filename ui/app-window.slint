@@ -1,15 +1,13 @@
 import {HorizontalBox, VerticalBox} from "std-widgets.slint";
 
 export component AppWindow inherits Window {
+
+    property <[string]> items : ["Item 1", "Item 2"];
+
     HorizontalBox {
-        VerticalBox {
+        for item in items : VerticalBox {
             Text {
-                text: "Item 1";
-            }
-        }
-        VerticalBox {
-            Text {
-                text: "Item 2";
+                text: item;
             }
         }
     }

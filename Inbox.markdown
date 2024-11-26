@@ -1,5 +1,5 @@
 # MVP
-- Display a list horizontally
+- Display a list of items horizontally
 - Display a child list vertically
 - Add Items
 - Delete Items
