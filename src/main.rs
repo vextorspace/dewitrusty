@@ -6,7 +6,11 @@ use std::error::Error;
 slint::include_modules!();
 
 fn main() -> Result<(), Box<dyn Error>> {
+    use slint::Model;
+
     let ui = AppWindow::new()?;
+
+    let items: Vec<ListItem> = ui.get_items().iter().collect();
 
     ui.run()?;
 
