@@ -9,4 +9,3 @@ fn test_title_correct() {
     Initializer::default().run(&app);
     assert_eq!(app.get_window_title(), "Dew-It");
 }
-
