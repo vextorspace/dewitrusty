@@ -6,7 +6,11 @@ export struct ListItem {
 
 export component AppWindow inherits Window {
 
-    in-out property <[ListItem]> items;
+    in property <[ListItem]> items;
+
+    in property <string> window_title;
+
+    window_title <=> self.title;
 
     HorizontalBox {
         for item in items : VerticalBox {

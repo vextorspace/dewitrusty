@@ -2,13 +2,14 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use std::error::Error;
-
-slint::include_modules!();
+use dewitrusty::ui::initializer::Initializer;
+use dewitrusty::ui::slint_exports::{AppWindow, ListItem};
+use slint::ComponentHandle;
 
 fn main() -> Result<(), Box<dyn Error>> {
-    use slint::Model;
-
     let ui = AppWindow::new()?;
+
+    Initializer::default().run(&ui);
 
     let items = slint::VecModel::default();
 
