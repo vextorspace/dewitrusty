@@ -1,7 +1,9 @@
-
 use dewitrusty::ui::initializer::Initializer;
 
+use dewitrusty::data::item_loader::ItemLoader;
 use dewitrusty::ui::slint_exports::AppWindow;
+
+mod common;
 
 #[test]
 fn test_title_correct() {

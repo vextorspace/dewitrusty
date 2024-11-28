@@ -1,10 +1,17 @@
 use ui::slint_exports::AppWindow;
-
+use crate::data::item_loader::ItemLoader;
 use crate::ui;
 
 pub struct Initializer {
     title: String,
 }
+
+impl Initializer {
+    pub fn with_item_loader(&self, item_loader: Box<dyn ItemLoader>) -> Initializer {
+        todo!()
+    }
+}
+
 impl Default for Initializer {
     fn default() -> Self {
         Self {
