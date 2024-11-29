@@ -17,7 +17,7 @@ impl ItemLoader for DefaultItemLoader {
 }
 
 impl DefaultItemLoader {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self {}
     }
 }
