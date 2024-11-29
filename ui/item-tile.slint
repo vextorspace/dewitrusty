@@ -1,5 +1,5 @@
 import {VerticalBox} from "std-widgets.slint";
-import { ListItem } from "list-item.slint";
+import { ListItem, ItemData } from "list-item.slint";
 
 
 export component ItemTile {
@@ -13,7 +13,7 @@ export component ItemTile {
             border-radius: border_radius;
             border-color: border_color;
             Text {
-                text: item.text;
+                text: item.data.text;
             }
         }
     }

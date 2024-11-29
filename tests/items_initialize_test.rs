@@ -2,8 +2,7 @@ mod tests {
     use super::test_utils::TestItemLoader;
     use dewitrusty::data::item_loader::ItemLoader;
     use dewitrusty::ui::initializer::Initializer;
-    use dewitrusty::ui::slint_exports::AppWindow;
-    use dewitrusty::ui::slint_exports::ListItem;
+    use dewitrusty::ui::slint_exports::{AppWindow, ItemData, ListItem};
 
     #[test]
     fn test_initialize_uses_item_loader_for_ui() {
@@ -11,8 +10,8 @@ mod tests {
         let app = AppWindow::new().unwrap();
         let loader: Box<dyn ItemLoader> = Box::new(
             TestItemLoader::new(vec!(
-                ListItem { text: "Item 1".into() },
-                ListItem { text: "Item 2".into() },
+                ListItem { data: ItemData { id: "i1".into(), text: "Item 1".into() } },
+                ListItem { data: ItemData { id: "i2".into(), text: "Item 2".into() } },
             ))
         );
         Initializer::default().with_item_loader(loader).run(&app);

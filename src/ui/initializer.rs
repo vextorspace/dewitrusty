@@ -52,7 +52,7 @@ impl Initializer {
 mod tests {
     use super::*;
     use crate::data::item_loader::test_item_loader::TestItemLoader;
-    use crate::ui::slint_exports::ListItem;
+    use crate::ui::slint_exports::{ItemData, ListItem};
     use slint::Model;
 
     #[test]
@@ -73,8 +73,8 @@ mod tests {
 
         let loader: Box<dyn ItemLoader> = Box::new(
             TestItemLoader::new(vec!(
-                ListItem { text: "Item 1".into() },
-                ListItem { text: "Item 2".into() },
+                ListItem { data: ItemData { text: "Item 1".into(), id: "i1".into() } },
+                ListItem { data: ItemData { text: "Item 2".into(), id: "i2".into() } },
             ))
         );
 
@@ -83,7 +83,7 @@ mod tests {
 
         let items: Vec<ListItem> = app.get_items().iter().collect();
         assert_eq!(items.len(), 2);
-        assert_eq!(items.get(0).unwrap().text, "Item 1");
-        assert_eq!(items.get(1).unwrap().text, "Item 2");
+        assert_eq!(items.get(0).unwrap().data.text, "Item 1");
+        assert_eq!(items.get(1).unwrap().data.text, "Item 2");
     }
 }

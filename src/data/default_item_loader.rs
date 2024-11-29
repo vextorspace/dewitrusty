@@ -1,17 +1,17 @@
 use super::item_loader::ItemLoader;
-use crate::ui::slint_exports::ListItem;
+use crate::ui::slint_exports::{ItemData, ListItem};
 
 pub struct DefaultItemLoader {}
 
 impl ItemLoader for DefaultItemLoader {
     fn load(&self) -> Vec<ListItem> {
         vec!(
-            ListItem { text: "Inbox".into() },
-            ListItem { text: "Todo".into() },
-            ListItem { text: "Projects".into() },
-            ListItem { text: "Waiting".into() },
-            ListItem { text: "Shelved".into() },
-            ListItem { text: "Reference".into() },
+            ListItem { data: ItemData { id: "inbox".into(), text: "Inbox".into() } },
+            ListItem { data: ItemData { id: "todo".into(), text: "Todo".into() } },
+            ListItem { data: ItemData { id: "projects".into(), text: "Projects".into() } },
+            ListItem { data: ItemData { id: "waiting".into(), text: "Waiting".into() } },
+            ListItem { data: ItemData { id: "shelved".into(), text: "Shelved".into() } },
+            ListItem { data: ItemData { id: "reference".into(), text: "Reference".into() } },
         )
     }
 }
@@ -33,11 +33,11 @@ mod tests {
 
         let items = loader.load();
 
-        assert_eq!(items[0].text, "Inbox");
-        assert_eq!(items[1].text, "Todo");
-        assert_eq!(items[2].text, "Projects");
-        assert_eq!(items[3].text, "Waiting");
-        assert_eq!(items[4].text, "Shelved");
-        assert_eq!(items[5].text, "Reference");
+        assert_eq!(items[0].data.text, "Inbox");
+        assert_eq!(items[1].data.text, "Todo");
+        assert_eq!(items[2].data.text, "Projects");
+        assert_eq!(items[3].data.text, "Waiting");
+        assert_eq!(items[4].data.text, "Shelved");
+        assert_eq!(items[5].data.text, "Reference");
     }
 }
