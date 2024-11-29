@@ -1055,6 +1055,7 @@ dependencies = [
 name = "dewitrusty"
 version = "0.1.0"
 dependencies = [
+ "i-slint-backend-testing",
  "slint",
  "slint-build",
 ]
@@ -1741,6 +1742,16 @@ dependencies = [
  "i-slint-backend-winit",
  "i-slint-common",
  "i-slint-core",
+]
+
+[[package]]
+name = "i-slint-backend-testing"
+version = "1.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a4cf7d4174f261e85deb0e3919e9cdae78dcdd593e2ad716739400b756f7d924"
+dependencies = [
+ "i-slint-core",
+ "vtable",
 ]
 
 [[package]]

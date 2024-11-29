@@ -1,21 +1,42 @@
-use dewitrusty::ui::initializer::Initializer;
+mod tests {
+    use super::test_utils::TestItemLoader;
+    use dewitrusty::data::item_loader::ItemLoader;
+    use dewitrusty::ui::initializer::Initializer;
+    use dewitrusty::ui::slint_exports::AppWindow;
+    use dewitrusty::ui::slint_exports::ListItem;
 
-use dewitrusty::ui::slint_exports::AppWindow;
-use dewitrusty::ui::slint_exports::ListItem;
-use dewitrusty::data::item_loader::ItemLoader;
+    #[test]
+    fn test_initialize_uses_item_loader_for_ui() {
+        i_slint_backend_testing::init_no_event_loop();
+        let app = AppWindow::new().unwrap();
+        let loader: Box<dyn ItemLoader> = Box::new(
+            TestItemLoader::new(vec!(
+                ListItem { text: "Item 1".into() },
+                ListItem { text: "Item 2".into() },
+            ))
+        );
+        Initializer::default().with_item_loader(loader).run(&app);
+        assert_eq!(app.get_window_title(), "Dew-It");
+    }
+}
 
-mod common;
-use common::test_item_loader::TestItemLoader;
+pub mod test_utils {
+    use dewitrusty::data::item_loader::ItemLoader;
+    use dewitrusty::ui::slint_exports::ListItem;
 
-#[test]
-fn test_initialize_uses_item_loader_for_ui() {
-    let app = AppWindow::new().unwrap();
-    let loader: Box<dyn ItemLoader> = Box::new(
-        TestItemLoader::new(vec!(
-            ListItem{text: "Item 1".into()},
-            ListItem{text: "Item 2".into()},
-        ))
-    );
-    Initializer::default().with_item_loader(loader).run(&app);
-    assert_eq!(app.get_window_title(), "Dew-It");
+    pub struct TestItemLoader {
+        pub items: Vec<ListItem>,
+    }
+
+    impl ItemLoader for TestItemLoader {
+        fn load(&self) -> Vec<ListItem> {
+            self.items.clone()
+        }
+    }
+
+    impl TestItemLoader {
+        pub fn new(items: Vec<ListItem>) -> Self {
+            Self { items }
+        }
+    }
 }

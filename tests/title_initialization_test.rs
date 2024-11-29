@@ -1,13 +1,12 @@
-use dewitrusty::ui::initializer::Initializer;
+mod tests {
+    use dewitrusty::ui::initializer::Initializer;
+    use dewitrusty::ui::slint_exports::AppWindow;
 
-use dewitrusty::data::item_loader::ItemLoader;
-use dewitrusty::ui::slint_exports::AppWindow;
-
-mod common;
-
-#[test]
-fn test_title_correct() {
-    let app = AppWindow::new().unwrap();
-    Initializer::default().run(&app);
-    assert_eq!(app.get_window_title(), "Dew-It");
+    #[test]
+    fn test_title_correct() {
+        i_slint_backend_testing::init_no_event_loop();
+        let app = AppWindow::new().unwrap();
+        Initializer::default().run(&app);
+        assert_eq!(app.get_window_title(), "Dew-It");
+    }
 }
