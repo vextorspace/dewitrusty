@@ -1,3 +1,8 @@
+use slint_build::CompilerConfiguration;
+
 fn main() {
-    slint_build::compile("ui/app-window.slint").expect("Slint build failed");
+    let config = CompilerConfiguration::default()
+        .with_style("fluent".into());
+
+    slint_build::compile_with_config("ui/app-window.slint", config).expect("Slint build failed");
 }

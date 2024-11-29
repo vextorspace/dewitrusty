@@ -13,9 +13,17 @@ export component AppWindow inherits Window {
     window_title <=> self.title;
 
     HorizontalBox {
-        for item in items : VerticalBox {
-            Text {
-                text: item.text;
+        for item in items: VerticalBox {
+            property <color> border_color: black;
+            property <length> border_width: 1px;
+            property <length> border_radius: 4px;
+            Rectangle {
+                border-width: border_width;
+                border-radius: border_radius;
+                border-color: border_color;
+                Text {
+                    text: item.text;
+                }
             }
         }
     }
