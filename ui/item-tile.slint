@@ -1,0 +1,20 @@
+import {VerticalBox} from "std-widgets.slint";
+import { ListItem } from "list-item.slint";
+
+
+export component ItemTile {
+    in property <ListItem> item;
+    in property <color> border_color: black;
+    in property <length> border_width: 1px;
+    in property <length> border_radius: 4px;
+    VerticalBox {
+        Rectangle {
+            border-width: border_width;
+            border-radius: border_radius;
+            border-color: border_color;
+            Text {
+                text: item.text;
+            }
+        }
+    }
+}

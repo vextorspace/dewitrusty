@@ -1,8 +1,6 @@
-import {HorizontalBox, VerticalBox} from "std-widgets.slint";
-
-export struct ListItem {
-    text: string,
-}
+import {HorizontalBox} from "std-widgets.slint";
+import { ItemTile } from "item-tile.slint";
+import { ListItem } from "list-item.slint";
 
 export component AppWindow inherits Window {
 
@@ -13,18 +11,14 @@ export component AppWindow inherits Window {
     window_title <=> self.title;
 
     HorizontalBox {
-        for item in items: VerticalBox {
-            property <color> border_color: black;
-            property <length> border_width: 1px;
-            property <length> border_radius: 4px;
-            Rectangle {
-                border-width: border_width;
-                border-radius: border_radius;
-                border-color: border_color;
-                Text {
-                    text: item.text;
-                }
-            }
+        property <color> border_color: black;
+        property <length> border_width: 1px;
+        property <length> border_radius: 4px;
+        for item in items: ItemTile {
+            item: item;
+            border_color: border_color;
+            border_width: border_width;
+            border_radius: border_radius;
         }
     }
 }
