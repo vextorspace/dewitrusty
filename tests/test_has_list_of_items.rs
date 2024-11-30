@@ -9,8 +9,8 @@ fn there_exists_hpack_child() {
     let app = App::default();
     let wind: Window = WindowBuilder::new().build();
 
-    let finder = ItemListFinder::new();
-    ChildVisitor::new(&wind).visit(&finder);
+    let mut finder = ItemListFinder::new();
+    ChildVisitor::new(Box::new(&wind)).visit(&mut finder);
 
     assert_eq!(finder.item.unwrap().label(), "DewIt Now");
 }
@@ -27,8 +27,6 @@ impl ItemListFinder {
     }
 }
 
-impl VisitOperation for ItemListFinder {
-    fn visit(&self, child: Box<dyn WidgetExt>) {
-        todo!()
-    }
+impl<'a> VisitOperation<'a> for ItemListFinder {
+    fn visit(&mut self, child: Box<&'a dyn WidgetExt>) {}
 }
