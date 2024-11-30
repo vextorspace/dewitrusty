@@ -5,7 +5,7 @@ use fltk::window::Window;
 
 #[test]
 fn title_is_good() {
-    App::default();
+    let app = App::default();
     let wind: Window = WindowBuilder::new().build();
 
 
