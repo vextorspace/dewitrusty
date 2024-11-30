@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 dirs = "5.0.1"
 fltk = "1.4.36"
+uuid = { version = "1.11.0", features = ["v4"] }
 
 [build-dependencies]
 
